@@ -1,30 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import NexaBlack from './src/assets/fonts/Nexa-Trial-Black.ttf';
-import {useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+// import NexaBlack from './src/assets/fonts/Nexa-Trial-Black.ttf';
+// import {useFonts } from 'expo-font';
+// import AppLoading from 'expo-app-loading';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AuthNavigation from './src/navigation/authentication/AuthNavigation'
 
+const Stack = createNativeStackNavigator();
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    NexaBlack,
-  });
+  // let [fontsLoaded] = useFonts({
+  //   NexaBlack,
+  // });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // <View>
+    //   <Text>
+    //     Hello
+    //   </Text>
+    // </View>
+   <NavigationContainer>
+   <Stack.Navigator initialRouteName="AppHome">
+        <Stack.Screen
+          name="AppHome"
+          component={AuthNavigation}
+          options={{ headerShown: false }}
+        />
+        {/* <Stack.Screen
+          name="AppDashboard"
+          component={BottomStackNavigation}
+          options={{ headerShown: false }}
+        /> */}
+      </Stack.Navigator>
+   </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
