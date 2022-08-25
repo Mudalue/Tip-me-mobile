@@ -4,6 +4,7 @@ import { authscreens } from "../../constants/screens.js";
 
 const Stack = createNativeStackNavigator();
 
+
 const AuthNavigation = () => {
   return (
     <Stack.Navigator>

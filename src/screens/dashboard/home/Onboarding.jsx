@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import Container from "../../container/Container";
+import Container from "../../../container/Container";
 
 export const Onboarding = () => {
   return (

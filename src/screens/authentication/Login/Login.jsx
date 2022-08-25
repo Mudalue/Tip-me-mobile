@@ -1,5 +1,5 @@
-import React from 'react'
-import Container from '../../container/Container'
+import { View, Text } from 'react-native'
+import Container from '../../../container/Container'
 const Login = () => {
   return (
    <Container>
