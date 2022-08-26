@@ -4,7 +4,11 @@ import Inputfields from "../../../components/ui/atoms/inputfield/InputFields";
 import { colors } from "../../../constants/color";
 import Container from "../../../container/Container";
 import { registrationStyle } from "./style";
+import { useNavigation } from "@react-navigation/native";
+import { onboarding } from "../../../constants/screens";
+
 export const Registration = () => {
+  let navigation = useNavigation();
   return (
     <Container>
       <View
@@ -26,6 +30,7 @@ export const Registration = () => {
         <View style={{ height: "50%" }}>
           <Inputfields placeholder="email" type="emailAddress" />
           <Inputfields placeholder="password" type="password" />
+          <Inputfields placeholder="confirm password" type="password" />
           <View>
             <Button text="Register" />
           </View>
@@ -40,7 +45,7 @@ export const Registration = () => {
           }}
         >
           <Text style={{marginHorizontal: 4, color: colors.grey}}>Already have an account?</Text>
-          <Text style={{color: colors.Purple, fontWeight: "700"}}>Login</Text>
+          <Text style={{color: colors.Purple, fontWeight: "700"}} onPress={() => navigation.navigate(onboarding.LOGIN)}>Login</Text>
         </View>
       </View>
     </Container>

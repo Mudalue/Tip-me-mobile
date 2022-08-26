@@ -20,7 +20,7 @@ const Inputfields = ({ placeholder, color, type }) => {
         style={[styles.input, { borderColor: isActive ? colors.Purple : "transparent" }]}
         value={value}
         placeholder={placeholder}
-        onChangeText={OnChange}
+        onChange={OnChange}
         placeholderStyle={styles.placeholder}
         placeholderTextColor={colors.grey}
         selectionColor={colors.grey}
