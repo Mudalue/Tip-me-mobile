@@ -2,14 +2,14 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { colors } from "../../../../constants/color";
+import { Fonts } from "../../../../constants/fonts";
 
-const Inputfields = ({ placeholder, color, type }) => {
+const Inputfields = ({ placeholder, color, type, onchange, value}) => {
   const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState("");
-  const OnChange = (e) => {
-    let value = e.target.value;
-    setValue(value);
-  };
+  // const OnChange = (e) => {
+  //   let value = e.target.value;
+  //   setValue(value);
+  // };
   const onfocus = () => {
     setFocus();
   };
@@ -20,7 +20,7 @@ const Inputfields = ({ placeholder, color, type }) => {
         style={[styles.input, { borderColor: isActive ? colors.Purple : "transparent" }]}
         value={value}
         placeholder={placeholder}
-        onChange={OnChange}
+        onChangeText={onchange}
         placeholderStyle={styles.placeholder}
         placeholderTextColor={colors.grey}
         selectionColor={colors.grey}
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     fontSize: 14,
-    fontWeight: "400",
     color: colors.grey,
+    fontFamily: Fonts.MonsteratBold
   },
 });

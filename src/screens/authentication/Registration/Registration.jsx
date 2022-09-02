@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TextInput } from "react-native";
 import Button from "../../../components/ui/atoms/button/Button";
 import Inputfields from "../../../components/ui/atoms/inputfield/InputFields";
 import { colors } from "../../../constants/color";
@@ -6,9 +6,35 @@ import Container from "../../../container/Container";
 import { registrationStyle } from "./style";
 import { useNavigation } from "@react-navigation/native";
 import { onboarding } from "../../../constants/screens";
+import { Fonts } from "../../../constants/fonts";
+import { useState } from "react";
+import { postRequest } from "../../../assets/utils/api";
+
 
 export const Registration = () => {
   let navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  //submit form
+  const submit =  async() =>{
+    console.log(email)
+    console.log(password)
+    if (!email.trim() || !password.trim() || !confirm.trim()){
+      alert("Input value required");
+    }
+    else{
+      if (password === confirm) {
+        const response = await postRequest("user/signup", {
+          email: email,
+          password: password
+        })
+        console.log(response.data)
+      }else {
+        alert("password does not match!!")
+      }
+    }
+  }
   return (
     <Container>
       <View
@@ -28,11 +54,11 @@ export const Registration = () => {
           <Text style={registrationStyle.text}>keep your data safe!</Text>
         </View>
         <View style={{ height: "50%" }}>
-          <Inputfields placeholder="email" type="emailAddress" />
-          <Inputfields placeholder="password" type="password" />
-          <Inputfields placeholder="confirm password" type="password" />
+          <Inputfields placeholder="email" type="emailAddress" onchange={setEmail} value={email} />
+          <Inputfields placeholder="password" type="password" onchange={setPassword} value={password}/>
+          <Inputfields placeholder="confirm password" type="password" onchange={setConfirm}/>
           <View>
-            <Button text="Register" />
+            <Button text={!email.trim() || !password.trim() || !confirm.trim()? "fill the form to proceed": " Register"} onpress={submit}/>
           </View>
         </View>
         <View
@@ -44,8 +70,8 @@ export const Registration = () => {
             alignContent: "center",
           }}
         >
-          <Text style={{marginHorizontal: 4, color: colors.grey}}>Already have an account?</Text>
-          <Text style={{color: colors.Purple, fontWeight: "700"}} onPress={() => navigation.navigate(onboarding.LOGIN)}>Login</Text>
+          <Text style={{marginHorizontal: 4, color: colors.grey, fontFamily: Fonts.Monsterat}}>Already have an account?</Text>
+          <Text style={{color: colors.Purple, fontFamily: Fonts.MonsteratBold}} onPress={() => navigation.navigate(onboarding.LOGIN)}>Login</Text>
         </View>
       </View>
     </Container>

@@ -1,29 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-// import NexaBlack from './src/assets/fonts/Nexa-Trial-Black.ttf';
-// import {useFonts } from 'expo-font';
-// import AppLoading from 'expo-app-loading';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AuthNavigation from './src/navigation/authentication/AuthNavigation'
+import { StatusBar } from "expo-status-bar";
+import { ActivityIndicator, SafeAreaView } from "react-native";
+import * as Font from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AuthNavigation from "./src/navigation/authentication/AuthNavigation";
+import { useState, useEffect } from "react";
+import { ReadFromStorage } from "./src/assets/utils/appStorage";
 
-const Stack = createNativeStackNavigator();
 export default function App() {
-  // let [fontsLoaded] = useFonts({
-  //   NexaBlack,
-  // });
+  const [appIsReady, setAppIsReady] = useState(false);
+  const [statusBar, showStatusBar] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // if (!fontsLoaded) {
-  //   return <AppLoading />;
-  // }
+  useEffect(() => {
+    async function bootApp() {
+      try {
+        // load required fonts
+        await Font.loadAsync({
+          Montserrat: require('./src/assets/fonts/Montserrat-Regular.ttf'),
+          Montserrat500: require("./src/assets/fonts/Montserrat_500.ttf"),
+          Montserrat600: require("./src/assets/fonts/Montserrat_600.ttf"),
+          MontserratBold: require("./src/assets/fonts/Montserrat-Bold.ttf"),
+          MtSans: require("./src/assets/fonts/MartelSans/MartelSans-Bold.ttf"),
+          InterMedium: require("./src/assets/fonts/Inter/Inter-Medium.ttf"),
+          InterRegular: require("./src/assets/fonts/Inter/Inter-Regular.ttf"),
+          InterSemiBold: require("./src/assets/fonts/Inter/Inter-SemiBold.ttf"),
+        });
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+        let checkLog = await ReadFromStorage("@token");
+        if (checkLog) setIsLoggedIn(true);
+        console.log("End!");
+      }
+    }
+    bootApp();
+  }, []);
+
+  const Stack = createNativeStackNavigator();
+  if (!appIsReady) return <ActivityIndicator color="blue" />;
   return (
-    // <View>
-    //   <Text>
-    //     Hello
-    //   </Text>
-    // </View>
-   <NavigationContainer>
-   <Stack.Navigator initialRouteName="AppHome">
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="AppHome">
         <Stack.Screen
           name="AppHome"
           component={AuthNavigation}
@@ -35,8 +55,6 @@ export default function App() {
           options={{ headerShown: false }}
         /> */}
       </Stack.Navigator>
-   </NavigationContainer>
+    </NavigationContainer>
   );
 }
-
-

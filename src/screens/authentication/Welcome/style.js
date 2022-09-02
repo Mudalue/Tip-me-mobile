@@ -1,4 +1,5 @@
 import { colors } from "../../../constants/color";
+import { Fonts } from "../../../constants/fonts";
 export const welcomepagestyle = {
   image: {
     height: 300,
@@ -8,7 +9,8 @@ export const welcomepagestyle = {
   title: {
     fontSize: 30,
     fontWeight: "700",
-    color: colors.Purple
+    color: colors.Purple,
+    fontFamily: Fonts.MonsteratBold
   },
   subtitle: {
     paddingVertical: 15,
@@ -17,6 +19,7 @@ export const welcomepagestyle = {
     textAlign: "center",
     marginBottom: 100,
     fontSize: 12,
-    color: colors.grey
+    color: colors.grey,
+    fontFamily: Fonts.Monsterat
   },
 };

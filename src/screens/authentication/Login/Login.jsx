@@ -6,6 +6,7 @@ import { colors } from "../../../constants/color";
 import { registrationStyle } from "../Registration/style";
 import Button from "../../../components/ui/atoms/button/Button";
 import Inputfields from "../../../components/ui/atoms/inputfield/InputFields";
+import { Fonts } from "../../../constants/fonts";
 const Login = () => {
   let navigation = useNavigation();
   return (
@@ -42,8 +43,8 @@ const Login = () => {
             alignContent: "center",
           }}
         >
-          <Text style={{marginHorizontal: 4, color: colors.grey}}>Don't have an account?</Text>
-          <Text style={{color: colors.Purple, fontWeight: "700"}} onPress={() => navigation.navigate(onboarding.REGISTRATION)}>Sign up</Text>
+          <Text style={{marginHorizontal: 4, color: colors.grey, fontFamily: Fonts.Monsterat}}>Don't have an account?</Text>
+          <Text style={{color: colors.Purple, fontFamily: Fonts.MonsteratBold}} onPress={() => navigation.navigate(onboarding.REGISTRATION)}>Sign up</Text>
         </View>
       </View>
     </Container>
