@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     color: colors.grey,
+    fontFamily: Fonts.Monsterat,
+    fontSize: 12
   },
   placeholder: {
     fontSize: 14,

@@ -10,31 +10,32 @@ import { Fonts } from "../../../constants/fonts";
 import { useState } from "react";
 import { postRequest } from "../../../assets/utils/api";
 
-
 export const Registration = () => {
   let navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   //submit form
-  const submit =  async() =>{
-    console.log(email)
-    console.log(password)
-    if (!email.trim() || !password.trim() || !confirm.trim()){
+  const submit = async () => {
+    if (!email.trim() || !password.trim() || !confirm.trim()) {
       alert("Input value required");
-    }
-    else{
+    } else {
       if (password === confirm) {
         const response = await postRequest("user/signup", {
           email: email,
-          password: password
-        })
-        console.log(response.data)
-      }else {
-        alert("password does not match!!")
+          password: password,
+        });
+        console.log(response.data);
+        if (response.data.isSuccess !== "true") {
+          navigation.navigate(onboarding.OTPVERIFICATION);
+        } else {
+          alert(response.data);
+        }
+      } else {
+        alert("password does not match!!");
       }
     }
-  }
+  };
   return (
     <Container>
       <View
@@ -54,11 +55,32 @@ export const Registration = () => {
           <Text style={registrationStyle.text}>keep your data safe!</Text>
         </View>
         <View style={{ height: "50%" }}>
-          <Inputfields placeholder="email" type="emailAddress" onchange={setEmail} value={email} />
-          <Inputfields placeholder="password" type="password" onchange={setPassword} value={password}/>
-          <Inputfields placeholder="confirm password" type="password" onchange={setConfirm}/>
+          <Inputfields
+            placeholder="email"
+            type="emailAddress"
+            onchange={setEmail}
+            value={email}
+          />
+          <Inputfields
+            placeholder="password"
+            type="password"
+            onchange={setPassword}
+            value={password}
+          />
+          <Inputfields
+            placeholder="confirm password"
+            type="password"
+            onchange={setConfirm}
+          />
           <View>
-            <Button text={!email.trim() || !password.trim() || !confirm.trim()? "fill the form to proceed": " Register"} onpress={submit}/>
+            <Button
+              text={
+                !email.trim() || !password.trim() || !confirm.trim()
+                  ? "fill the form to proceed"
+                  : " Register"
+              }
+              onpress={submit}
+            />
           </View>
         </View>
         <View
@@ -70,8 +92,21 @@ export const Registration = () => {
             alignContent: "center",
           }}
         >
-          <Text style={{marginHorizontal: 4, color: colors.grey, fontFamily: Fonts.Monsterat}}>Already have an account?</Text>
-          <Text style={{color: colors.Purple, fontFamily: Fonts.MonsteratBold}} onPress={() => navigation.navigate(onboarding.LOGIN)}>Login</Text>
+          <Text
+            style={{
+              marginHorizontal: 4,
+              color: colors.grey,
+              fontFamily: Fonts.Monsterat,
+            }}
+          >
+            Already have an account?
+          </Text>
+          <Text
+            style={{ color: colors.Purple, fontFamily: Fonts.MonsteratBold }}
+            onPress={() => navigation.navigate(onboarding.OTPVERIFICATION)}
+          >
+            Login
+          </Text>
         </View>
       </View>
     </Container>
