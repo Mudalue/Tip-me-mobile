@@ -55,10 +55,10 @@ const Otp = () => {
               marginVertical: 55,
             }}
           >
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber1} value={number1}/>
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber2} value={number2}/>
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber3} value={number3}/>
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber4} value={number4}/>
+            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber1} value={number1} maxLength={1}/>
+            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber2} value={number2} maxLength={1}/>
+            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber3} value={number3} maxLength={1}/>
+            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber4} value={number4} maxLength={1}/>
           </View>
           <View>
             <Button text="Verify and Proceed" onpress={verify}/>

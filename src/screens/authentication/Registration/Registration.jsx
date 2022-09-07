@@ -60,6 +60,7 @@ export const Registration = () => {
             type="emailAddress"
             onchange={setEmail}
             value={email}
+            label="check"
           />
           <Inputfields
             placeholder="password"

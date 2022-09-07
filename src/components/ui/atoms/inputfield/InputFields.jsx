@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { colors } from "../../../../constants/color";
 import { Fonts } from "../../../../constants/fonts";
 
-const Inputfields = ({ placeholder, color, type, onchange, value}) => {
+const Inputfields = ({ placeholder, color, type, onchange, value, label}) => {
   const [isActive, setIsActive] = useState(false);
   // const OnChange = (e) => {
   //   let value = e.target.value;
@@ -27,6 +27,7 @@ const Inputfields = ({ placeholder, color, type, onchange, value}) => {
         textContentType={type}
         onFocus={() => setIsActive(true)}
         onBlur={() => setIsActive(false)}
+        inputAccessoryViewID={label}
       />
     </View>
   );
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     padding: 10,
     color: colors.grey,
     fontFamily: Fonts.Monsterat,
-    fontSize: 12
+    fontSize: 12,
   },
   placeholder: {
     fontSize: 14,
