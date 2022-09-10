@@ -28,6 +28,7 @@ const Inputfields = ({ placeholder, color, type, onchange, value, label}) => {
         onFocus={() => setIsActive(true)}
         onBlur={() => setIsActive(false)}
         inputAccessoryViewID={label}
+        autoCapitalize="none"
       />
     </View>
   );

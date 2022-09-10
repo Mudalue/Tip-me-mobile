@@ -1,15 +1,16 @@
-import { StatusBar } from "expo-status-bar";
-import { ActivityIndicator, SafeAreaView } from "react-native";
+
+import { ActivityIndicator } from "react-native";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthNavigation from "./src/navigation/authentication/AuthNavigation";
 import { useState, useEffect } from "react";
 import { ReadFromStorage } from "./src/assets/utils/appStorage";
+import BottomStackNavigation from "./src/navigation/authentication/ButtomStacknavigation";
+import { colors } from "./src/constants/color";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const [statusBar, showStatusBar] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -49,11 +50,11 @@ export default function App() {
           component={AuthNavigation}
           options={{ headerShown: false }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="AppDashboard"
           component={BottomStackNavigation}
           options={{ headerShown: false }}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,4 +1,4 @@
-import { Text, View, Image, TextInput } from "react-native";
+import { Text, View, Image, ActivityIndicator } from "react-native";
 import Button from "../../../components/ui/atoms/button/Button";
 import Inputfields from "../../../components/ui/atoms/inputfield/InputFields";
 import { colors } from "../../../constants/color";
@@ -15,22 +15,25 @@ export const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [loader, setLoader] = useState(false);
   //submit form
   const submit = async () => {
     if (!email.trim() || !password.trim() || !confirm.trim()) {
       alert("Input value required");
     } else {
       if (password === confirm) {
+        setLoader(true);
         const response = await postRequest("user/signup", {
           email: email,
           password: password,
         });
         console.log(response.data);
-        if (response.data.isSuccess !== "true") {
+        if (response.data.isSuccess === true) {
           navigation.navigate(onboarding.OTPVERIFICATION);
         } else {
           alert(response.data);
         }
+        setLoader(true);
       } else {
         alert("password does not match!!");
       }
@@ -72,16 +75,23 @@ export const Registration = () => {
             placeholder="confirm password"
             type="password"
             onchange={setConfirm}
+            value={confirm}
           />
           <View>
-            <Button
-              text={
-                !email.trim() || !password.trim() || !confirm.trim()
-                  ? "fill the form to proceed"
-                  : " Register"
-              }
-              onpress={submit}
-            />
+            {loader === true ? (
+              <View style={{ marginVertical: 20 }}>
+                <ActivityIndicator size="large" color={colors.Purple} />
+              </View>
+            ) : (
+              <Button
+                text={
+                  !email.trim() || !password.trim() || !confirm.trim()
+                    ? "fill the form to proceed"
+                    : " Register"
+                }
+                onpress={submit}
+              />
+            )}
           </View>
         </View>
         <View
@@ -104,7 +114,7 @@ export const Registration = () => {
           </Text>
           <Text
             style={{ color: colors.Purple, fontFamily: Fonts.MonsteratBold }}
-            onPress={() => navigation.navigate(onboarding.OTPVERIFICATION)}
+            onPress={() => navigation.navigate(onboarding.LOGIN)}
           >
             Login
           </Text>

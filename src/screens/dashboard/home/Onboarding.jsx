@@ -1,12 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Text, StatusBar } from "react-native";
+import { colors } from "../../../constants/color";
 import Container from "../../../container/Container";
 
 export const Onboarding = () => {
   return (
     <Container>
-      <View>
-        <Text>Onboarding</Text>
-      </View>
+
     </Container>
   );
 };

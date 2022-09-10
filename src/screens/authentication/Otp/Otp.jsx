@@ -1,5 +1,5 @@
-import { View, Text, Image, TextInput } from "react-native";
-import React, {useState} from "react";
+import { View, Text, Image, TextInput, ActivityIndicator } from "react-native";
+import React, { useState } from "react";
 import Container from "../../../container/Container";
 import { useNavigation } from "@react-navigation/native";
 import { colors } from "../../../constants/color";
@@ -14,19 +14,24 @@ const Otp = () => {
   const [number2, setNumber2] = useState("");
   const [number3, setNumber3] = useState("");
   const [number4, setNumber4] = useState("");
-  const [email, setEmail] = useState("emekachristian511@gmail.com")
+  const [email, setEmail] = useState("emekachristian511@gmail.com");
+  const [loader, setLoader] = useState(false);
   let navigation = useNavigation();
   //verify
-  const verify = async () =>{
-
-      const response = await postRequest("user/verify", {
-        email: email,
-        otp: `${number1}${number2}${number3}${number4}`
-      })
-      console.log(response.data)
-      console.log(`${number1}${number2}${number3}${number4}`)
-      console.log(email)
-  }
+  const verify = async () => {
+    setLoader(true)
+    const response = await postRequest("user/verify", {
+      email: email,
+      otp: `${number1}${number2}${number3}${number4}`,
+    });
+    console.log(response.data);
+    if (response.data.isSuccess === true) {
+      navigation.navigate(onboarding.LOGIN);
+    } else {
+      alert(response.data);
+    }
+    setLoader(false);
+  };
   return (
     <Container>
       <View
@@ -55,13 +60,43 @@ const Otp = () => {
               marginVertical: 55,
             }}
           >
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber1} value={number1} maxLength={1}/>
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber2} value={number2} maxLength={1}/>
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber3} value={number3} maxLength={1}/>
-            <TextInput style={otpstyle.textinput} keyboardType="number-pad" onChangeText={setNumber4} value={number4} maxLength={1}/>
+            <TextInput
+              style={otpstyle.textinput}
+              keyboardType="number-pad"
+              onChangeText={setNumber1}
+              value={number1}
+              maxLength={1}
+            />
+            <TextInput
+              style={otpstyle.textinput}
+              keyboardType="number-pad"
+              onChangeText={setNumber2}
+              value={number2}
+              maxLength={1}
+            />
+            <TextInput
+              style={otpstyle.textinput}
+              keyboardType="number-pad"
+              onChangeText={setNumber3}
+              value={number3}
+              maxLength={1}
+            />
+            <TextInput
+              style={otpstyle.textinput}
+              keyboardType="number-pad"
+              onChangeText={setNumber4}
+              value={number4}
+              maxLength={1}
+            />
           </View>
           <View>
-            <Button text="Verify and Proceed" onpress={verify}/>
+            {loader === true ? (
+              <View style={{ marginVertical: 20 }}>
+                <ActivityIndicator size="large" color={colors.Purple} />
+              </View>
+            ) : (
+              <Button text="Verify and Proceed" onpress={verify} />
+            )}
           </View>
         </View>
         <View
@@ -84,7 +119,7 @@ const Otp = () => {
           </Text>
           <Text
             style={{ color: colors.Purple, fontFamily: Fonts.MonsteratBold }}
-            onPress={() => navigation.navigate(onboarding.REGISTRATION)}
+            onPress={() => navigation.navigate(onboarding.RESENDOTP)}
           >
             Resend otp
           </Text>
