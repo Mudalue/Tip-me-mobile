@@ -4,6 +4,11 @@ import { colors } from "../../../constants/color";
 import { Fonts } from "../../../constants/fonts";
 import Container from "../../../container/Container";
 import { onboardingstyle } from "./style";
+import photo1 from '../../../assets/images/photo1.jpg'
+import photo2 from '../../../assets/images/photo2.jpg'
+import photo3 from '../../../assets/images/photo3.jpg'
+import photo4 from '../../../assets/images/photo4.jpg'
+import photo5 from '../../../assets/images/photo5.jpg'
 
 export const Onboarding = () => {
   const content = [
@@ -12,11 +17,11 @@ export const Onboarding = () => {
     { id: 3, name: "Qr-code", icon: "qrcode", color: "orange" },
   ];
   const activity = [
-    { id: 1, name: "John doe", image: "../../../assets/images/photo1.jpg", transaction: "2", amount: "100" },
-    { id: 2, name: "Abiodun lawal", image: "../../../assets/images/saving.png", transaction: "4", amount: "500" },
-    { id: 3, name: "Badmus Rafiat", image: "", transaction: "10", amount: "4000" },
-    { id: 4, name: "Bode Olawale", image: "", transaction: "5" , amount: "700"},
-    { id: 5, name: "Anita Joseph", image: "", transaction: "3",  amount: "200" },
+    { id: 1, name: "John doe", image: photo1, transaction: "2", amount: "100" },
+    { id: 2, name: "Abiodun lawal", image: photo2, transaction: "4", amount: "500" },
+    { id: 3, name: "Badmus Rafiat", image: photo3, transaction: "10", amount: "4000" },
+    { id: 4, name: "Bode Olawale", image: photo4, transaction: "5" , amount: "700"},
+    { id: 5, name: "Anita Joseph", image: photo5, transaction: "3",  amount: "200" },
   ];
   return (
     <Container>
@@ -30,8 +35,8 @@ export const Onboarding = () => {
         <View style={onboardingstyle.balanceSection}>
           <View style={onboardingstyle.balanceContainer}>
             <View>
-              <Text style={onboardingstyle.balanceText}>Total balance</Text>
-              <Text style={onboardingstyle.balanceAmount}>N 3200</Text>
+              <Text style={onboardingstyle.balanceText}>Your balance</Text>
+              <Text style={onboardingstyle.balanceAmount}>{"\u20A6"} 00.0k</Text>
             </View>
             <View>
               <Image
@@ -58,7 +63,7 @@ export const Onboarding = () => {
             </View>
             <View style={onboardingstyle.statTextContainer}>
               <Text style={onboardingstyle.statText}>Earned</Text>
-              <Text style={onboardingstyle.statAmount}>N 300</Text>
+              <Text style={onboardingstyle.statAmount}>{"\u20A6"} 0.0k</Text>
             </View>
           </View>
           <View style={onboardingstyle.statSubContainer}>
@@ -67,7 +72,7 @@ export const Onboarding = () => {
             </View>
             <View style={onboardingstyle.statTextContainer}>
               <Text style={onboardingstyle.statText}>Spent</Text>
-              <Text style={onboardingstyle.statAmount}>N 100</Text>
+              <Text style={onboardingstyle.statAmount}>{"\u20A6"} 0.0k</Text>
             </View>
           </View>
         </View>
@@ -85,7 +90,7 @@ export const Onboarding = () => {
                 }}
               >
                 <View style={{display: "flex", flexDirection: "row"}}>
-                  <ImageBackground
+                  <Image
                   resizeMode="cover"
                     source={a.image}
                     style={{ borderRadius: 50 / 2, width: 50, height: 50 }}
@@ -96,7 +101,7 @@ export const Onboarding = () => {
                   </View>
                 </View>
                 <View style={{paddingTop: 10}}>
-                  <Text style={{fontFamily: Fonts.MonsteratBold, fontSize: 16}}> N {a.amount}</Text>
+                  <Text style={{fontFamily: Fonts.MonsteratBold, fontSize: 16}}> {"\u20A6"} {a.amount}</Text>
                 </View>
               </View>
             ))}

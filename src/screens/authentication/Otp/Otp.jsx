@@ -10,19 +10,20 @@ import { onboarding } from "../../../constants/screens";
 import { postRequest } from "../../../assets/utils/api";
 
 const Otp = () => {
-  const [number1, setNumber1] = useState("");
-  const [number2, setNumber2] = useState("");
-  const [number3, setNumber3] = useState("");
-  const [number4, setNumber4] = useState("");
+  // const [number1, setNumber1] = useState("");
+  // const [number2, setNumber2] = useState("");
+  // const [number3, setNumber3] = useState("");
+  // const [number4, setNumber4] = useState("");
+  const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("emekachristian511@gmail.com");
   const [loader, setLoader] = useState(false);
   let navigation = useNavigation();
   //verify
   const verify = async () => {
-    setLoader(true)
+    setLoader(true);
     const response = await postRequest("user/verify", {
       email: email,
-      otp: `${number1}${number2}${number3}${number4}`,
+      otp: otp,
     });
     console.log(response.data);
     if (response.data.isSuccess === true) {
@@ -51,7 +52,15 @@ const Otp = () => {
           <Text style={otpstyle.text}>Check your mail for otp</Text>
         </View>
         <View style={{ height: "45%" }}>
-          <View
+          <OTPInput
+            onChangeText={setOtp}
+            value={otp}
+            borderColor={colors.Purple}
+            boxBackgroundColor={colors.grey}
+            cursorColor={colors.grey}
+          />
+          ;
+          {/* <View
             style={{
               display: "flex",
               flexDirection: "row",
@@ -88,7 +97,7 @@ const Otp = () => {
               value={number4}
               maxLength={1}
             />
-          </View>
+          </View> */}
           <View>
             {loader === true ? (
               <View style={{ marginVertical: 20 }}>
