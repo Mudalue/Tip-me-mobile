@@ -1,14 +1,13 @@
-import { Text, View } from 'react-native'
-import React, { Component } from 'react'
+import { Text, View } from "react-native";
+import React from "react";
+import Container from "../../../container/Container";
 
-export class Settings extends Component {
-  render() {
-    return (
+export default function Settings() {
+  return (
+    <Container>
       <View>
         <Text>Settings</Text>
       </View>
-    )
-  }
+    </Container>
+  );
 }
-
-export default Settings
