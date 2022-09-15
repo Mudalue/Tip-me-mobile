@@ -48,7 +48,7 @@ export default function Transactions() {
           }}
         >
           {content.map((contents) => (
-            <View
+            <TouchableOpacity
               style={{
                 height: 100,
                 backgroundColor: colors.white,
@@ -71,7 +71,7 @@ export default function Transactions() {
               <View>
                 <Icon name={contents.icon} size="40" color={colors.Purple}/>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>
