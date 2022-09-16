@@ -50,5 +50,29 @@ export const transactionstyle = {
     lineHeight: 20,
     color: colors.white,
     marginTop: 13,
-  }
+  },
+  contentContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+    marginTop: 20,
+  },
+  contentButton: {
+    height: 100,
+    backgroundColor: colors.white,
+    width: "100%",
+    marginVertical: 10,
+    padding: 10,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    borderRadius: 10,
+  },
+  contentText: { fontFamily: Fonts.MonsteratBold, lineHeight: 20 },
+  contentSubText: {
+    fontFamily: Fonts.Monsterat,
+    fontSize: 12,
+    lineHeight: 20,
+    color: colors.grey,
+  },
 };

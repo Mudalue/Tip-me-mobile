@@ -39,37 +39,20 @@ export default function Transactions() {
           <Text style={transactionstyle.balanceText}>Your balance</Text>
           <Text style={transactionstyle.walletBold}>N 30000</Text>
         </View>
-        <View
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-            marginTop: 20,
-          }}
-        >
+        <View style={transactionstyle.contentContainer}>
           {content.map((contents) => (
-            <TouchableOpacity
-              style={{
-                height: 100,
-                backgroundColor: colors.white,
-                width: "100%",
-                marginVertical: 10,
-                padding: 10,
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                borderRadius: 10
-              }}
-            >
-              <View style={{width: "80%"}}>
-                <Text style={{fontFamily: Fonts.MonsteratBold, lineHeight: 20}}>{contents.name}</Text>
-                <Text style={{fontFamily: Fonts.Monsterat, fontSize: 12, lineHeight: 20, color: colors.grey}}>
+            <TouchableOpacity style={transactionstyle.contentButton}>
+              <View style={{ width: "80%" }}>
+                <Text style={transactionstyle.contentText}>
+                  {contents.name}
+                </Text>
+                <Text style={transactionstyle.contentSubText}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
                   nulla
                 </Text>
               </View>
               <View>
-                <Icon name={contents.icon} size="40" color={colors.Purple}/>
+                <Icon name={contents.icon} size="40" color={colors.Purple} />
               </View>
             </TouchableOpacity>
           ))}
