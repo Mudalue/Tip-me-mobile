@@ -3,7 +3,6 @@ import React from "react";
 import Container from "../../../container/Container";
 import { colors } from "../../../constants/color";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { Fonts } from "../../../constants/fonts";
 import { transactionstyle } from "../transactions/style.js";
 
 export default function Transactions() {
