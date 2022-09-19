@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, ImageBackground } from "react-native";
+import { View, Text, Image, ScrollView, ImageBackground, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { colors } from "../../../constants/color";
 import { Fonts } from "../../../constants/fonts";
@@ -9,12 +9,16 @@ import photo2 from '../../../assets/images/photo2.jpg'
 import photo3 from '../../../assets/images/photo3.jpg'
 import photo4 from '../../../assets/images/photo4.jpg'
 import photo5 from '../../../assets/images/photo5.jpg'
+import { useNavigation } from "@react-navigation/native";
+import { DashboardScreenTitles } from "../../../constants/screens";
+
 
 export const Onboarding = () => {
+  let navigation = useNavigation();
   const content = [
-    { id: 1, name: "transfer", icon: "paper-plane", color: "red" },
-    { id: 2, name: "scan code", icon: "barcode", color: "green" },
-    { id: 3, name: "Qr-code", icon: "qrcode", color: "orange" },
+    { id: 1, name: "transfer", icon: "paper-plane", color: "red"},
+    { id: 2, name: "scan code", icon: "barcode", color: "green", navigation: DashboardScreenTitles.SCAN },
+    { id: 3, name: "Qr-code", icon: "qrcode", color: "orange", navigation: DashboardScreenTitles.QRCODE },
   ];
   const activity = [
     { id: 1, name: "John doe", image: photo1, transaction: "2", amount: "100" },
@@ -48,12 +52,12 @@ export const Onboarding = () => {
         </View>
         <View style={onboardingstyle.contentContainer}>
           {content.map((d) => (
-            <View style={onboardingstyle.contentCard} key={d.id}>
+            <TouchableOpacity style={onboardingstyle.contentCard} key={d.id} onPress={()=>navigation.navigate(d.navigation)}>
               <View style={onboardingstyle.contentIcon}>
-                <Icon name={d.icon} size="25x" color={d.color} />
+                <Icon name={d.icon} size={25} color={d.color} />
               </View>
               <Text style={onboardingstyle.contentText}>{d.name}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
         <View style={onboardingstyle.statContainer}>
@@ -77,7 +81,7 @@ export const Onboarding = () => {
           </View>
         </View>
         <View>
-          <Text style={onboardingstyle.nameText}>Activity</Text>
+          <Text style={onboardingstyle.nameText}>Activities</Text>
           <ScrollView>
             {activity.map((a) => (
               <View
@@ -93,7 +97,7 @@ export const Onboarding = () => {
                   <Image
                   resizeMode="cover"
                     source={a.image}
-                    style={{ borderRadius: 50 / 2, width: 50, height: 50 }}
+                    style={{ borderRadius: 50 / 2, width: 50, height: 50, borderWidth: 2, borderColor: colors.grey }}
                   />
                   <View style={{ marginHorizontal: 10, paddingTop: 10 }}>
                     <Text style={{fontFamily: Fonts.MonsteratBold}}>{a.name}</Text>

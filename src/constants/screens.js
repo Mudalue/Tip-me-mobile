@@ -8,6 +8,8 @@ import DashboardStackNavigation from "../navigation/dashboard/DashboardStackNavi
 import TransactionStackNavigation from "../navigation/transaction/TransactionStackNavigation";
 import Settings from "../screens/dashboard/setting/Settings";
 import Transactions from "../screens/dashboard/transactions/Transactions";
+import Scan from "../screens/dashboard/home/Scan";
+import Qrcode from "../screens/dashboard/home/Qrcode";
 
 export const authscreens = [
   { id: 1, name: "welcome", component: Welcome },
@@ -37,6 +39,8 @@ export const TabScreenNavStack = {
 export const DashboardScreenTitles = {
   DASHBOARD: 'DashboardHome',
   DASHBOARD_RECEIVED: 'dashboard_received',
+  SCAN: "scan",
+  QRCODE: "qrcodescan"
 }
 export const TranxScreenTitles = {
   HOME: 'TransactionHome',
@@ -65,6 +69,14 @@ export const DashboardStack = [
   {
     name: DashboardScreenTitles.DASHBOARD,
     component: Onboarding,
+  },
+  {
+    name: DashboardScreenTitles.SCAN,
+    component: Scan,
+  },
+  {
+    name: DashboardScreenTitles.QRCODE,
+    component: Qrcode,
   },
 ]
 

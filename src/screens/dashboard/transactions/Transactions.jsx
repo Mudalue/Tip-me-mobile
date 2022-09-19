@@ -30,17 +30,17 @@ export default function Transactions() {
             </View>
             <View>
               <TouchableOpacity style={transactionstyle.plusbutton}>
-                <Icon name="add" size="15" color="#fff" />
+                <Icon name="add" size={15} color="#fff" />
               </TouchableOpacity>
             </View>
           </View>
 
           <Text style={transactionstyle.balanceText}>Your balance</Text>
-          <Text style={transactionstyle.walletBold}>N 30000</Text>
+          <Text style={transactionstyle.walletBold}>{"\u20A6"} 30000</Text>
         </View>
         <View style={transactionstyle.contentContainer}>
           {content.map((contents) => (
-            <TouchableOpacity style={transactionstyle.contentButton}>
+            <TouchableOpacity style={transactionstyle.contentButton} key={contents.id}>
               <View style={{ width: "80%" }}>
                 <Text style={transactionstyle.contentText}>
                   {contents.name}
@@ -51,7 +51,7 @@ export default function Transactions() {
                 </Text>
               </View>
               <View>
-                <Icon name={contents.icon} size="40" color={colors.Purple} />
+                <Icon name={contents.icon} size={40} color={colors.Purple} />
               </View>
             </TouchableOpacity>
           ))}
