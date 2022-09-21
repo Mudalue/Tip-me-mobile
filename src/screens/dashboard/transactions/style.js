@@ -13,6 +13,7 @@ export const transactionstyle = {
     height: "25%",
     padding: 10,
     borderRadius: 10,
+    marginTop: 20
   },
   content: {
     display: "flex",

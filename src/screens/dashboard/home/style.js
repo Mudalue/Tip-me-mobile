@@ -9,9 +9,10 @@ container: {
     backgroundColor: "#ecf0f1",
   }, 
   nameText:{
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "700",
     fontFamily: Fonts.MonsteratBold,
+    paddingVertical: 5
   },
   dateText: {
     fontSize: 12,
