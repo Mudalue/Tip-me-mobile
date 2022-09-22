@@ -10,6 +10,8 @@ import Settings from "../screens/dashboard/setting/Settings";
 import Transactions from "../screens/dashboard/transactions/Transactions";
 import Scan from "../screens/dashboard/home/Scan";
 import Qrcode from "../screens/dashboard/home/Qrcode";
+import CreateAccount from "../screens/dashboard/transactions/other-transaction-pages/CreateAccount";
+import PayBills from "../screens/dashboard/transactions/other-transaction-pages/PayBills";
 
 export const authscreens = [
   { id: 1, name: "welcome", component: Welcome },
@@ -44,6 +46,8 @@ export const DashboardScreenTitles = {
 }
 export const TranxScreenTitles = {
   HOME: 'TransactionHome',
+  CREATEACCOUNT: 'CreateAccount',
+  PAYBILL: 'PayBill'
 }
 // bottom tab navigation options
 export const TabScreenOptions = [
@@ -85,5 +89,13 @@ export const TransactionStacks = [
   {
     name: TranxScreenTitles.HOME,
     component: Transactions,
+  },
+  {
+    name: TranxScreenTitles.CREATEACCOUNT,
+    component: CreateAccount,
+  },
+  {
+    name: TranxScreenTitles.PAYBILL,
+    component: PayBills,
   },
 ]

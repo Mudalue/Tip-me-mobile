@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     fontFamily: Fonts.Monsterat,
     fontSize: 12,
+    width: "100%"
   },
   placeholder: {
     fontSize: 14,

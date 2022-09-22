@@ -1,13 +1,17 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../../container/Container";
 import { colors } from "../../../constants/color";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { transactionstyle } from "../transactions/style.js";
+import { useNavigation } from "@react-navigation/native";
+import { TranxScreenTitles } from "../../../constants/screens";
+
 
 export default function Transactions() {
+  let navigation = useNavigation();
   const content = [
-    { id: 1, name: "Pay bills", icon: "credit-card" },
+    { id: 1, name: "Pay bills", icon: "credit-card", navigation: TranxScreenTitles.PAYBILL },
     { id: 2, name: "Transaction history", icon: "restore" },
     { id: 3, name: "save", icon: "stars" },
     { id: 4, name: "Credit wallet", icon: "payments" },
@@ -29,18 +33,25 @@ export default function Transactions() {
               </Text>
             </View>
             <View>
-              <TouchableOpacity style={transactionstyle.plusbutton}>
+              <TouchableOpacity
+                style={transactionstyle.plusbutton}
+                onPress={()=>navigation.navigate(TranxScreenTitles.CREATEACCOUNT)}
+              >
                 <Icon name="add" size={15} color="#fff" />
               </TouchableOpacity>
             </View>
           </View>
 
           <Text style={transactionstyle.balanceText}>Your balance</Text>
-          <Text style={transactionstyle.walletBold}>{"\u20A6"} 30000</Text>
+          <Text style={transactionstyle.walletBold}>{"\u20A6"} 0</Text>
         </View>
         <View style={transactionstyle.contentContainer}>
           {content.map((contents) => (
-            <TouchableOpacity style={transactionstyle.contentButton} key={contents.id}>
+            <TouchableOpacity
+              style={transactionstyle.contentButton}
+              onPress={()=>navigation.navigate(contents.navigation)}
+              key={contents.id}
+            >
               <View style={{ width: "80%" }}>
                 <Text style={transactionstyle.contentText}>
                   {contents.name}

@@ -16,8 +16,8 @@ import { DashboardScreenTitles } from "../../../constants/screens";
 export const Onboarding = () => {
   let navigation = useNavigation();
   const content = [
-    { id: 1, name: "transfer", icon: "paper-plane", color: "red"},
-    { id: 2, name: "scan code", icon: "barcode", color: "green", navigation: DashboardScreenTitles.SCAN },
+    { id: 1, name: "Transfer", icon: "paper-plane", color: "red"},
+    { id: 2, name: "Scan Code", icon: "barcode", color: "green", navigation: DashboardScreenTitles.SCAN },
     { id: 3, name: "Qr-code", icon: "qrcode", color: "orange", navigation: DashboardScreenTitles.QRCODE },
   ];
   const activity = [
@@ -39,7 +39,7 @@ export const Onboarding = () => {
         <View style={onboardingstyle.balanceSection}>
           <View style={onboardingstyle.balanceContainer}>
             <View>
-              <Text style={onboardingstyle.balanceText}>Your balance</Text>
+              <Text style={onboardingstyle.balanceText}>Your Balance</Text>
               <Text style={onboardingstyle.balanceAmount}>{"\u20A6"} 00.0k</Text>
             </View>
             <View>

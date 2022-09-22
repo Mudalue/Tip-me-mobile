@@ -26,7 +26,7 @@ const Login = () => {
       password: password,
     });
     console.log(response.data);
-    if (response.data.isSuccess !== "true") {
+    if (response.data.isSuccess === true) {
       setToken(response.data.token);
       WriteToStorage(token, "@token");
       navigation.navigate("AppDashboard");
