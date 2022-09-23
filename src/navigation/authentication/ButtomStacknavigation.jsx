@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { TabScreenOptions } from "../../constants/screens";
 import { colors } from "../../constants/color";
-import  Icon  from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const Tab = createBottomTabNavigator();
 export default function BottomStackNavigation() {
@@ -17,6 +17,7 @@ export default function BottomStackNavigation() {
     >
       {TabScreenOptions.map((screen) => (
         <Tab.Screen
+          key={screen.id}
           name={screen.name}
           component={screen.component}
           options={{

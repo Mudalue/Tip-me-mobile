@@ -12,6 +12,7 @@ export default function TransactionStackNavigation() {
           name={dash.name}
           component={dash.component}
           options={{ headerShown: false }}
+          key={dash.id}
         />
       ))}
     </Stack.Navigator>

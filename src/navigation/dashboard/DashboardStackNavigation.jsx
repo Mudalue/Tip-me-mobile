@@ -1,8 +1,8 @@
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { DashboardStack } from '../../constants/screens'
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { DashboardStack } from "../../constants/screens";
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 export default function DashboardStackNavigation() {
   return (
@@ -12,8 +12,9 @@ export default function DashboardStackNavigation() {
           name={dash.name}
           component={dash.component}
           options={{ headerShown: false }}
+          key={dash.id}
         />
       ))}
     </Stack.Navigator>
-  )
+  );
 }

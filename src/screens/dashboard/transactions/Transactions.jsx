@@ -12,7 +12,7 @@ export default function Transactions() {
   let navigation = useNavigation();
   const content = [
     { id: 1, name: "Pay bills", icon: "credit-card", navigation: TranxScreenTitles.PAYBILL },
-    { id: 2, name: "Transaction history", icon: "restore" },
+    { id: 2, name: "Transaction history", icon: "restore", navigation: TranxScreenTitles.HISTORY },
     { id: 3, name: "save", icon: "stars" },
     { id: 4, name: "Credit wallet", icon: "payments" },
   ];
