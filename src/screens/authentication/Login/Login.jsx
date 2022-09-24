@@ -10,6 +10,7 @@ import { Fonts } from "../../../constants/fonts";
 import { useState } from "react";
 import { postRequest } from "../../../assets/utils/api";
 import { WriteToStorage } from "../../../assets/utils/appStorage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login = () => {
   let navigation = useNavigation();
@@ -25,17 +26,22 @@ const Login = () => {
       email: email,
       password: password,
     });
-    console.log(response.data);
-    if (response.data.isSuccess === true) {
+    // console.log(response.data);
+    // console.log(response.data.token)
+    if (response.data.message === "Login successful") {
       setToken(response.data.token);
-      WriteToStorage(token, "@token");
+      console.log("Boom")
+      const see = await AsyncStorage.setItem(token, "token")
+      console.log(see)
+      // WriteToStorage(token, "@token");
       navigation.navigate("AppDashboard");
     } else {
       alert(response.data);
-    }
+      console.log("boom")
+    } 
     setLoader(false);
   };
-
+  console.log(token)
   return (
     <Container>
       <View

@@ -1,4 +1,3 @@
-
 import { ActivityIndicator } from "react-native";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,6 +7,7 @@ import { useState, useEffect } from "react";
 import { ReadFromStorage } from "./src/assets/utils/appStorage";
 import BottomStackNavigation from "./src/navigation/authentication/ButtomStacknavigation";
 import { colors } from "./src/constants/color";
+import UserContext from "./src/context/UserContext";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -18,7 +18,7 @@ export default function App() {
       try {
         // load required fonts
         await Font.loadAsync({
-          Montserrat: require('./src/assets/fonts/Montserrat-Regular.ttf'),
+          Montserrat: require("./src/assets/fonts/Montserrat-Regular.ttf"),
           Montserrat500: require("./src/assets/fonts/Montserrat_500.ttf"),
           Montserrat600: require("./src/assets/fonts/Montserrat_600.ttf"),
           MontserratBold: require("./src/assets/fonts/Montserrat-Bold.ttf"),
@@ -33,6 +33,7 @@ export default function App() {
       } finally {
         setAppIsReady(true);
         let checkLog = await ReadFromStorage("@token");
+        console.log(checkLog)
         if (checkLog) setIsLoggedIn(true);
         console.log("End!");
       }
@@ -41,21 +42,23 @@ export default function App() {
   }, []);
 
   const Stack = createNativeStackNavigator();
-  if (!appIsReady) return <ActivityIndicator color="blue" />;
+  if (!appIsReady) return <ActivityIndicator color={colors.Purple} />;
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="AppHome">
-        <Stack.Screen
-          name="AppHome"
-          component={AuthNavigation}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="AppDashboard"
-          component={BottomStackNavigation}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserContext>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="AppHome">
+          <Stack.Screen
+            name="AppHome"
+            component={AuthNavigation}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="AppDashboard"
+            component={BottomStackNavigation}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserContext>
   );
 }
