@@ -22,6 +22,9 @@ const Login = () => {
   //login
   const login = async () => {
     setLoader(true);
+    if (!email.trim() || !password.trim() || !confirm.trim()) {
+      alert("Input value required");
+    }else{
     const response = await postRequest("user/login", {
       email: email,
       password: password,
@@ -38,7 +41,7 @@ const Login = () => {
     } else {
       alert(response.data);
       console.log("boom")
-    } 
+    } }
     setLoader(false);
   };
   console.log(token)

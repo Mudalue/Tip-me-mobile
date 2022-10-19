@@ -13,6 +13,7 @@ import Qrcode from "../screens/dashboard/home/Qrcode";
 import CreateAccount from "../screens/dashboard/transactions/other-transaction-pages/CreateAccount";
 import PayBills from "../screens/dashboard/transactions/other-transaction-pages/PayBills";
 import TransactionHistory from "../screens/dashboard/transactions/other-transaction-pages/TransactionHistory";
+import Transfer from "../screens/dashboard/home/Transfer";
 
 export const authscreens = [
   { id: 1, name: "welcome", component: Welcome },
@@ -44,6 +45,7 @@ export const DashboardScreenTitles = {
   DASHBOARD_RECEIVED: "dashboard_received",
   SCAN: "scan",
   QRCODE: "qrcodescan",
+  TRANSFER: "transfer"
 };
 export const TranxScreenTitles = {
   HOME: "TransactionHome",
@@ -78,6 +80,7 @@ export const DashboardStack = [
   { id: 1, name: DashboardScreenTitles.DASHBOARD, component: Onboarding },
   { id: 2, name: DashboardScreenTitles.SCAN, component: Scan },
   { id: 3, name: DashboardScreenTitles.QRCODE, component: Qrcode },
+  {id: 4, name: DashboardScreenTitles.TRANSFER, component: Transfer}
 ];
 
 // Transaction stack screens

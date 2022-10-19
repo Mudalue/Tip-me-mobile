@@ -16,7 +16,7 @@ import { DashboardScreenTitles } from "../../../constants/screens";
 export const Onboarding = () => {
   let navigation = useNavigation();
   const content = [
-    { id: 1, name: "Transfer", icon: "paper-plane", color: "red"},
+    { id: 1, name: "Transfer", icon: "paper-plane", color: "red", navigation: DashboardScreenTitles.TRANSFER},
     { id: 2, name: "Scan Code", icon: "barcode", color: "green", navigation: DashboardScreenTitles.SCAN },
     { id: 3, name: "Qr-code", icon: "qrcode", color: "orange", navigation: DashboardScreenTitles.QRCODE },
   ];
