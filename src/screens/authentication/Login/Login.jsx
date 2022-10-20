@@ -17,34 +17,30 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState("token");
 
   //login
   const login = async () => {
     setLoader(true);
-    if (!email.trim() || !password.trim() || !confirm.trim()) {
+    if (!email.trim() || !password.trim()) {
       alert("Input value required");
-    }else{
-    const response = await postRequest("user/login", {
-      email: email,
-      password: password,
-    });
-    // console.log(response.data);
-    // console.log(response.data.token)
-    if (response.data.message === "Login successful") {
-      setToken(response.data.token);
-      console.log("Boom")
-      const see = await AsyncStorage.setItem(token, "token")
-      console.log(see)
-      // WriteToStorage(token, "@token");
-      navigation.navigate("AppDashboard");
     } else {
-      alert(response.data);
-      console.log("boom")
-    } }
+      const response = await postRequest("user/login", {
+        email: email,
+        password: password,
+      });
+      if (response.data.message === "Login successful") {
+        setToken(response.data.token);
+        const see = await AsyncStorage.setItem(token, "token");
+        console.log(see);
+        navigation.navigate("AppDashboard");
+      } else {
+        alert(response.data);
+      }
+    }
     setLoader(false);
   };
-  console.log(token)
+  console.log(token);
   return (
     <Container>
       <View
@@ -84,7 +80,14 @@ const Login = () => {
                 <ActivityIndicator size="large" color={colors.Purple} />
               </View>
             ) : (
-              <Button text="Login" onpress={login} />
+              <Button
+                text={
+                  !email.trim() || !password.trim()
+                    ? "enter credentials"
+                    : "Login"
+                }
+                onpress={login}
+              />
             )}
           </View>
         </View>
@@ -108,7 +111,7 @@ const Login = () => {
           </Text>
           <Text
             style={{ color: colors.Purple, fontFamily: Fonts.MonsteratBold }}
-            onPress={() => navigation.navigate("AppDashboard")}
+            onPress={() => navigation.navigate(onboarding.REGISTRATION)}
           >
             Sign up
           </Text>

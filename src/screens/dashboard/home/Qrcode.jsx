@@ -19,7 +19,7 @@ const Qrcode = () => {
           backgroundColor: "#ecf0f1"
         }}
       >
-        <Text style={{ textAlign: "center", lineHeight: 50, fontSize: 18, fontFamily: Fonts.MonsteratBold, color: colors.grey }}>Scan the qr code below</Text>
+        <Text style={{ textAlign: "center", lineHeight: 50, fontSize: 18, fontFamily: Fonts.MonsteratBold, color: colors.Purple }}>Scan the qr code below</Text>
         <QRCode
           value={url}
           size={300}

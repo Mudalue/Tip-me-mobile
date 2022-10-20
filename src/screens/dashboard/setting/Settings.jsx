@@ -5,8 +5,12 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../../../constants/color";
 import { Fonts } from "../../../constants/fonts";
 import { settingStyle } from "./style";
+import { useNavigation } from "@react-navigation/native";
+import { onboarding, SettingsScreenTitles, SettingsStack } from "../../../constants/screens";
+
 
 export default function Settings() {
+  let navigation = useNavigation();
   const settings = [
     {
       id: 1,
@@ -14,6 +18,7 @@ export default function Settings() {
       icon: "security",
       color: colors.Purple,
       button: true,
+      navigate: SettingsScreenTitles.CHANGEPASSWORD
     },
     {
       id: 2,
@@ -34,7 +39,8 @@ export default function Settings() {
       name: "Logout",
       icon: "logout",
       color: "red",
-      button: false,
+      button: true,
+      navigate: onboarding.REGISTRATION
     },
   ];
   return (
@@ -76,7 +82,7 @@ export default function Settings() {
                 </View>
               </View>
               {setting.button && (
-                <TouchableOpacity style={settingStyle.settingButton}>
+                <TouchableOpacity style={settingStyle.settingButton} onPress={() => navigation.navigate(setting.navigate)}>
                   <Icon name="chevron-right" size={20} />
                 </TouchableOpacity>
               )}

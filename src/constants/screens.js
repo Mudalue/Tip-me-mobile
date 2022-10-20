@@ -14,6 +14,7 @@ import CreateAccount from "../screens/dashboard/transactions/other-transaction-p
 import PayBills from "../screens/dashboard/transactions/other-transaction-pages/PayBills";
 import TransactionHistory from "../screens/dashboard/transactions/other-transaction-pages/TransactionHistory";
 import Transfer from "../screens/dashboard/home/Transfer";
+import ResetPassword from "../screens/dashboard/setting/ResetPassword";
 
 export const authscreens = [
   { id: 1, name: "welcome", component: Welcome },
@@ -53,6 +54,11 @@ export const TranxScreenTitles = {
   PAYBILL: "PayBill",
   HISTORY: 'transactionhistory'
 };
+export const SettingsScreenTitles = {
+  CHANGEPASSWORD: 'ChangePassword',
+  NOTIFICATION: 'Notification',
+  LANGUAGE: 'Language'
+}
 // bottom tab navigation options
 export const TabScreenOptions = [
   {
@@ -90,3 +96,8 @@ export const TransactionStacks = [
   { id: 3, name: TranxScreenTitles.PAYBILL, component: PayBills },
   { id: 4, name: TranxScreenTitles.HISTORY, component: TransactionHistory },
 ];
+
+//Setting stack screens
+export const SettingsStack = [
+  {id: 1, name: SettingsScreenTitles.CHANGEPASSWORD, component: ResetPassword}
+]
