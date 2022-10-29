@@ -1,4 +1,12 @@
-import { View, Text, Image, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard
+} from "react-native";
 import Container from "../../../container/Container";
 import { useNavigation } from "@react-navigation/native";
 import { onboarding } from "../../../constants/screens";
@@ -35,7 +43,7 @@ const Login = () => {
         console.log(see);
         navigation.navigate("AppDashboard");
       } else {
-        alert(response.data);
+        alert("invalid credentials!!");
       }
     }
     setLoader(false);
@@ -43,80 +51,90 @@ const Login = () => {
   console.log(token);
   return (
     <Container>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: 15,
-        }}
+      <KeyboardAvoidingView
+        behavior="position"
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
       >
-        <View style={{ height: "45%", padding: 15 }}>
-          <Image
-            source={require("../../../assets/images/login.png")}
-            style={{ width: "100%", height: 250 }}
-          />
-          <Text style={registrationStyle.header}>Hello Again!</Text>
-          <Text style={registrationStyle.text}>
-            Login your credentials to proceed!
-          </Text>
-        </View>
-        <View style={{ height: "50%" }}>
-          <Inputfields
-            placeholder="email"
-            type="emailAddress"
-            onchange={setEmail}
-            value={email}
-          />
-          <Inputfields
-            placeholder="password"
-            type="password"
-            onchange={setPassword}
-            value={password}
-          />
-          <View>
-            {loader === true ? (
-              <View style={{ marginVertical: 20 }}>
-                <ActivityIndicator size="large" color={colors.Purple} />
-              </View>
-            ) : (
-              <Button
-                text={
-                  !email.trim() || !password.trim()
-                    ? "enter credentials"
-                    : "Login"
-                }
-                onpress={login}
-              />
-            )}
-          </View>
-        </View>
-        <View
-          style={{
-            height: "5%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignContent: "center",
-          }}
-        >
-          <Text
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View
             style={{
-              marginHorizontal: 4,
-              color: colors.grey,
-              fontFamily: Fonts.Monsterat,
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              padding: 15,
             }}
           >
-            Don't have an account?
-          </Text>
-          <Text
-            style={{ color: colors.Purple, fontFamily: Fonts.MonsteratBold }}
-            onPress={() => navigation.navigate(onboarding.REGISTRATION)}
-          >
-            Sign up
-          </Text>
-        </View>
-      </View>
+            <View style={{ height: "45%", padding: 15 }}>
+              <Image
+                source={require("../../../assets/images/login.png")}
+                style={{ width: "100%", height: 250 }}
+              />
+              <Text style={registrationStyle.header}>Hello Again!</Text>
+              <Text style={registrationStyle.text}>
+                Login your credentials to proceed!
+              </Text>
+            </View>
+            <View style={{ height: "50%" }}>
+              <Inputfields
+                placeholder="email"
+                type="emailAddress"
+                onchange={setEmail}
+                value={email}
+              />
+              <Inputfields
+                placeholder="password"
+                type="password"
+                onchange={setPassword}
+                value={password}
+              />
+              <View>
+                {loader === true ? (
+                  <View style={{ marginVertical: 20 }}>
+                    <ActivityIndicator size="large" color={colors.Purple} />
+                  </View>
+                ) : (
+                  <Button
+                    text={
+                      !email.trim() || !password.trim()
+                        ? "enter credentials"
+                        : "Login"
+                    }
+                    onpress={login}
+                  />
+                )}
+              </View>
+            </View>
+            <View
+              style={{
+                height: "5%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <Text
+                style={{
+                  marginHorizontal: 4,
+                  color: colors.grey,
+                  fontFamily: Fonts.Monsterat,
+                }}
+              >
+                Don't have an account?
+              </Text>
+              <Text
+                style={{
+                  color: colors.Purple,
+                  fontFamily: Fonts.MonsteratBold,
+                }}
+                onPress={() => navigation.navigate(onboarding.REGISTRATION)}
+              >
+                Sign up
+              </Text>
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </Container>
   );
 };

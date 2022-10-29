@@ -9,7 +9,9 @@ import BottomStackNavigation from "./src/navigation/authentication/ButtomStackna
 import { colors } from "./src/constants/color";
 import UserContext from "./src/context/UserContext";
 
+
 export default function App() {
+
   const [appIsReady, setAppIsReady] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -33,8 +35,11 @@ export default function App() {
       } finally {
         setAppIsReady(true);
         let checkLog = await ReadFromStorage("@token");
-        console.log(checkLog)
-        if (checkLog) setIsLoggedIn(true);
+        console.log(checkLog);
+        if (checkLog) {
+          setIsLoggedIn(true);
+          // navigation.navigate("AppDashboard");
+        }
         console.log("End!");
       }
     }
@@ -46,7 +51,7 @@ export default function App() {
   return (
     <UserContext>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="AppHome">
+        <Stack.Navigator initialRouteName= "AppHome">
           <Stack.Screen
             name="AppHome"
             component={AuthNavigation}

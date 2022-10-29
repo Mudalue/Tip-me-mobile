@@ -1,4 +1,12 @@
-import { Text, View, Image, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import Button from "../../../components/ui/atoms/button/Button";
 import Inputfields from "../../../components/ui/atoms/inputfield/InputFields";
 import { colors } from "../../../constants/color";
@@ -41,85 +49,97 @@ export const Registration = () => {
   };
   return (
     <Container>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: 15,
-        }}
+      <KeyboardAvoidingView
+        behavior="position"
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
       >
-        <View style={{ height: "45%", padding: 15 }}>
-          <Image
-            source={require("../../../assets/images/register.png")}
-            style={{ width: "100%", height: 250 }}
-          />
-          <Text style={registrationStyle.header}>Welcome to Tipp</Text>
-          <Text style={registrationStyle.text}>keep your data safe!</Text>
-        </View>
-        <View style={{ height: "50%" }}>
-          <Inputfields
-            placeholder="email"
-            type="emailAddress"
-            onchange={setEmail}
-            value={email}
-            label="check"
-          />
-          <Inputfields
-            placeholder="password"
-            type="password"
-            onchange={setPassword}
-            value={password}
-          />
-          <Inputfields
-            placeholder="confirm password"
-            type="password"
-            onchange={setConfirm}
-            value={confirm}
-          />
-          <View>
-            {loader === true ? (
-              <View style={{ marginVertical: 20 }}>
-                <ActivityIndicator size="large" color={colors.Purple} />
-              </View>
-            ) : (
-              <Button
-                text={
-                  !email.trim() || !password.trim() || !confirm.trim()
-                    ? "fill the form to proceed"
-                    : " Register"
-                }
-                onpress={submit}
-              />
-            )}
-          </View>
-        </View>
-        <View
-          style={{
-            height: "5%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignContent: "center",
-          }}
-        >
-          <Text
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View
             style={{
-              marginHorizontal: 4,
-              color: colors.grey,
-              fontFamily: Fonts.Monsterat,
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              padding: 15,
             }}
           >
-            Already have an account?
-          </Text>
-          <Text
-            style={{ color: colors.Purple, fontFamily: Fonts.MonsteratBold }}
-            onPress={() => navigation.navigate(onboarding.LOGIN)}
-          >
-            Login
-          </Text>
-        </View>
-      </View>
+            <View style={{ height: "45%", padding: 15 }}>
+              <Image
+                source={require("../../../assets/images/register.png")}
+                style={{ width: "100%", height: 250 }}
+              />
+              <Text style={registrationStyle.header}>Welcome to Tipp</Text>
+              <Text style={registrationStyle.text}>keep your data safe!</Text>
+            </View>
+
+            <View style={{ height: "50%" }}>
+              <Inputfields
+                placeholder="email"
+                type="emailAddress"
+                onchange={setEmail}
+                value={email}
+                label="check"
+              />
+              <Inputfields
+                placeholder="password"
+                type="password"
+                onchange={setPassword}
+                value={password}
+              />
+              <Inputfields
+                placeholder="confirm password"
+                type="password"
+                onchange={setConfirm}
+                value={confirm}
+              />
+              <View>
+                {loader === true ? (
+                  <View style={{ marginVertical: 20 }}>
+                    <ActivityIndicator size="large" color={colors.Purple} />
+                  </View>
+                ) : (
+                  <Button
+                    text={
+                      !email.trim() || !password.trim() || !confirm.trim()
+                        ? "fill the form to proceed"
+                        : " Register"
+                    }
+                    onpress={submit}
+                  />
+                )}
+              </View>
+            </View>
+
+            <View
+              style={{
+                height: "5%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <Text
+                style={{
+                  marginHorizontal: 4,
+                  color: colors.grey,
+                  fontFamily: Fonts.Monsterat,
+                }}
+              >
+                Already have an account?
+              </Text>
+              <Text
+                style={{
+                  color: colors.Purple,
+                  fontFamily: Fonts.MonsteratBold,
+                }}
+                onPress={() => navigation.navigate(onboarding.LOGIN)}
+              >
+                Login
+              </Text>
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </Container>
   );
 };
