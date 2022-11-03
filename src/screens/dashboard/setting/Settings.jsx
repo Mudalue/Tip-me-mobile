@@ -1,12 +1,11 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import React from "react";
 import Container from "../../../container/Container";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../../../constants/color";
 import { Fonts } from "../../../constants/fonts";
 import { settingStyle } from "./style";
 import { useNavigation } from "@react-navigation/native";
-import { onboarding, SettingsScreenTitles, SettingsStack } from "../../../constants/screens";
+import { onboarding, SettingsScreenTitles, UserScreenTitles } from "./../../../constants/screens";
 
 
 export default function Settings() {
@@ -14,11 +13,11 @@ export default function Settings() {
   const settings = [
     {
       id: 1,
-      name: "Change password",
+      name: "ResetPassword",
       icon: "security",
       color: colors.Purple,
       button: true,
-      navigate: SettingsScreenTitles.CHANGEPASSWORD
+      navigation: SettingsScreenTitles.CHANGEPASSWORD
     },
     {
       id: 2,
@@ -26,6 +25,7 @@ export default function Settings() {
       icon: "notifications",
       color: colors.Purple,
       button: true,
+      navigation: UserScreenTitles.NOTIFICATION
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ export default function Settings() {
       icon: "logout",
       color: "red",
       button: true,
-      navigate: onboarding.REGISTRATION
+      navigation: onboarding.REGISTRATION
     },
   ];
   return (
@@ -57,37 +57,36 @@ export default function Settings() {
                 <Text style={{ fontFamily: Fonts.MonsteratBold, fontSize: 14 }}>
                   John doe
                 </Text>
-                <Text style={settingStyle.accountText}>personal info</Text>
+                <Text style={settingStyle.accountText}>edit personal info</Text>
               </View>
             </View>
-            <TouchableOpacity style={settingStyle.settingButton}>
+            <TouchableOpacity style={settingStyle.settingButton} onPress={()=>navigation.navigate(UserScreenTitles.PROFILE)}>
               <Icon name="chevron-right" size={20} />
             </TouchableOpacity>
           </View>
         </View>
         <View style={{ padding: 10 }}>
           <Text style={settingStyle.settingHeader}>Settings</Text>
-          {settings.map((setting) => (
-            <View style={settingStyle.settingsubcategory} key={setting.id}>
+         
+            <View style={settingStyle.settingsubcategory} >
               <View style={{ display: "flex", flexDirection: "row" }}>
                 <View style={settingStyle.iconcontainer}>
-                  <Icon name={setting.icon} size={20} color={setting.color} />
+                  <Icon name={"face"} size={20} color={colors.Purple} />
                 </View>
                 <View style={{ paddingHorizontal: 20, paddingTop: 15 }}>
                   <Text
                     style={{ fontFamily: Fonts.MonsteratBold, fontSize: 14 }}
                   >
-                    {setting.name}
+                    test
                   </Text>
                 </View>
               </View>
-              {setting.button && (
-                <TouchableOpacity style={settingStyle.settingButton} onPress={() => navigation.navigate(setting.navigate)}>
+                <TouchableOpacity style={settingStyle.settingButton} onPress={()=>navigation.navigate(UserScreenTitles.NOTIFICATION)}>
                   <Icon name="chevron-right" size={20} />
                 </TouchableOpacity>
-              )}
+    
             </View>
-          ))}
+        
         </View>
       </View>
     </Container>

@@ -15,6 +15,8 @@ import PayBills from "../screens/dashboard/transactions/other-transaction-pages/
 import TransactionHistory from "../screens/dashboard/transactions/other-transaction-pages/TransactionHistory";
 import Transfer from "../screens/dashboard/home/Transfer";
 import ResetPassword from "../screens/dashboard/setting/ResetPassword";
+import Notification from "../screens/dashboard/setting/Notification";
+import Profile from "../screens/dashboard/user/Profile";
 
 export const authscreens = [
   { id: 1, name: "welcome", component: Welcome },
@@ -40,25 +42,31 @@ export const TabScreenNavStack = {
   DASHBOARD: "Home",
   SETTING: "Setting",
   TRANSACTIONS: "Transactions",
+  USER: "Profile",
 };
 export const DashboardScreenTitles = {
   DASHBOARD: "DashboardHome",
   DASHBOARD_RECEIVED: "dashboard_received",
   SCAN: "scan",
   QRCODE: "qrcodescan",
-  TRANSFER: "transfer"
+  TRANSFER: "transfer",
 };
 export const TranxScreenTitles = {
   HOME: "TransactionHome",
   CREATEACCOUNT: "CreateAccount",
   PAYBILL: "PayBill",
-  HISTORY: 'transactionhistory'
+  HISTORY: "transactionhistory",
 };
 export const SettingsScreenTitles = {
-  CHANGEPASSWORD: 'ChangePassword',
-  NOTIFICATION: 'Notification',
-  LANGUAGE: 'Language'
-}
+  CHANGEPASSWORD: "ResetPassword",
+  NOTIFICATION: "Notification",
+  LANGUAGE: "Language",
+};
+
+export const UserScreenTitles = {
+  PROFILE: "Profile",
+  NOTIFICATION: "Notification",
+};
 // bottom tab navigation options
 export const TabScreenOptions = [
   {
@@ -69,12 +77,18 @@ export const TabScreenOptions = [
   },
   {
     id: 2,
-    name: TabScreenNavStack.TRANSACTIONS,
-    component: TransactionStackNavigation,
-    icon: "compare-arrows",
+    name: TabScreenNavStack.USER,
+    component: Profile,
+    icon: "face",
   },
   {
     id: 3,
+    name: TabScreenNavStack.TRANSACTIONS,
+    component: TransactionStackNavigation,
+    icon: "receipt",
+  },
+  {
+    id: 4,
     name: TabScreenNavStack.SETTING,
     component: Settings,
     icon: "settings",
@@ -86,7 +100,7 @@ export const DashboardStack = [
   { id: 1, name: DashboardScreenTitles.DASHBOARD, component: Onboarding },
   { id: 2, name: DashboardScreenTitles.SCAN, component: Scan },
   { id: 3, name: DashboardScreenTitles.QRCODE, component: Qrcode },
-  {id: 4, name: DashboardScreenTitles.TRANSFER, component: Transfer}
+  { id: 4, name: DashboardScreenTitles.TRANSFER, component: Transfer },
 ];
 
 // Transaction stack screens
@@ -99,5 +113,15 @@ export const TransactionStacks = [
 
 //Setting stack screens
 export const SettingsStack = [
-  {id: 1, name: SettingsScreenTitles.CHANGEPASSWORD, component: ResetPassword}
-]
+  {
+    id: 1,
+    name: SettingsScreenTitles.CHANGEPASSWORD,
+    component: ResetPassword,
+  },
+  { id: 2, name: SettingsScreenTitles.NOTIFICATION, component: Notification },
+];
+//user stack screen
+export const ProfileStack = [
+  { id: 1, name: UserScreenTitles.PROFILE, component: Profile },
+  { id: 2, name: UserScreenTitles.NOTIFICATION, component: Notification },
+];

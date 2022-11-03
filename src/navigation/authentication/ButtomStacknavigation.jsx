@@ -12,7 +12,7 @@ export default function BottomStackNavigation() {
         tabBarIndicatorStyle: {
           backgroundColor: colors.Purple,
         },
-        tabBarActiveTintColor: colors.Purple,
+        tabBarActiveTintColor: "#000",
       }}
     >
       {TabScreenOptions.map((screen) => (
@@ -23,7 +23,7 @@ export default function BottomStackNavigation() {
           options={{
             headerShown: false,
             tabBarIcon: () => (
-              <Icon name={screen.icon} color="#232B2B" size={25} />
+              <Icon name={screen.icon} color="#232B2B" size={20} />
             ),
           }}
         />

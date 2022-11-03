@@ -38,7 +38,6 @@ export default function App() {
         console.log(checkLog);
         if (checkLog) {
           setIsLoggedIn(true);
-          // navigation.navigate("AppDashboard");
         }
         console.log("End!");
       }

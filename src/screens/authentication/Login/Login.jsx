@@ -52,8 +52,8 @@ const Login = () => {
   return (
     <Container>
       <KeyboardAvoidingView
-        behavior="position"
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        // keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View
