@@ -50,7 +50,7 @@ export default function App() {
   return (
     <UserContext>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName= "AppHome">
+        <Stack.Navigator initialRouteName= {isLoggedIn === true ? "AppDashboard" : "AppHome"}>
           <Stack.Screen
             name="AppHome"
             component={AuthNavigation}
