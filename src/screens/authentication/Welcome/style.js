@@ -5,14 +5,19 @@ export const welcomepagestyle = {
     height: 300,
     width: "100%",
     marginTop: 0,
+  }, 
+  image_work: {
+    height: 300,
+    width: "100%",
+    marginTop: 0,
   },
   title: {
     fontSize: 30,
     fontWeight: "700",
-    color: colors.Purple,
+    color: "#3D3D3D",
     fontFamily: Fonts.MonsteratBold
   },
-  subtitle: {
+  home: {
     paddingVertical: 15,
     paddingHorizontal: 20,
     lineHeight: 25,
@@ -22,4 +27,18 @@ export const welcomepagestyle = {
     color: colors.grey,
     fontFamily: Fonts.Monsterat
   },
+  subtitle: {
+    paddingVertical: 4,
+    paddingHorizontal: 2,
+    lineHeight: 20,
+    fontSize: 12,
+    color: colors.grey,
+    fontFamily: Fonts.Monsterat
+  },
+  dot:{
+    lineHeight: 25,
+    fontSize: 22,
+    color: colors.grey,
+    fontFamily: Fonts.Monsterat
+  }
 };

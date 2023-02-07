@@ -99,7 +99,7 @@ const Login = () => {
                         ? "enter credentials"
                         : "Login"
                     }
-                    onpress={login}
+                    onpress={navigation.navigate("AppDashboard")}
                   />
                 )}
               </View>
