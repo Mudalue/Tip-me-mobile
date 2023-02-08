@@ -28,7 +28,7 @@ export const Welcome = () => {
         onDone={() => navigation.navigate(onboarding.REGISTRATION)}
         pages={[
           {
-            backgroundColor: "#000",
+            backgroundColor: "#ffffff",
             image: (
               <Image
                 source={require("../../../assets/images/onboarding1.png")}
@@ -46,7 +46,7 @@ export const Welcome = () => {
             ),
           },
           {
-            backgroundColor: "#000",
+            backgroundColor: "#ffffff",
             image: (
               <Image
                 source={require("../../../assets/images/saving.png")}
