@@ -24,7 +24,7 @@ export const welcomepagestyle = {
     textAlign: "center",
     marginBottom: 100,
     fontSize: 12,
-    color: colors.grey,
+    color: colors.textGrey,
     fontFamily: Fonts.Monsterat
   },
   subtitle: {
@@ -32,13 +32,13 @@ export const welcomepagestyle = {
     paddingHorizontal: 2,
     lineHeight: 20,
     fontSize: 12,
-    color: colors.grey,
+    color: colors.textGrey,
     fontFamily: Fonts.Monsterat
   },
   dot:{
     lineHeight: 25,
     fontSize: 22,
-    color: colors.grey,
+    color: colors.textGrey,
     fontFamily: Fonts.Monsterat
   }
 };

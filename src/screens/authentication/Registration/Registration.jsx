@@ -17,6 +17,7 @@ import { onboarding } from "../../../constants/screens";
 import { Fonts } from "../../../constants/fonts";
 import { useState } from "react";
 import { postRequest } from "../../../assets/utils/api";
+// import { GoogleSignIn, GoogleSignInButton } from "@react-native-google-signin/google-signin";
 
 export const Registration = () => {
   let navigation = useNavigation();
@@ -24,6 +25,33 @@ export const Registration = () => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [loader, setLoader] = useState(false);
+
+  // GoogleSignIn.configure({
+  //   scopes: ["email", "profile"],
+  //   webClientId: "YOUR_WEB_CLIENT_ID",
+  //   offlineAccess: false,
+  // });
+
+  // const [user, setUser] = useState('');
+
+  // const signIn = async () => {
+  //   try {
+  //     const user = await GoogleSignIn.signIn();
+  //     setUser(user);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // const signOut = async () => {
+  //   try {
+  //     await GoogleSignIn.signOut();
+  //     setUser('');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   //submit form
   const submit = async () => {
     if (!email.trim() || !password.trim() || !confirm.trim()) {
@@ -62,16 +90,19 @@ export const Registration = () => {
               padding: 15,
             }}
           >
-            <View style={{ height: "45%", padding: 15 }}>
-              <Image
+            <View style={{ padding: 15 }}>
+              {/* <Image
                 source={require("../../../assets/images/register.png")}
                 style={{ width: "100%", height: 250 }}
-              />
-              <Text style={registrationStyle.header}>Welcome to Tipp</Text>
-              <Text style={registrationStyle.text}>keep your data safe!</Text>
+              /> */}
+              <Text style={registrationStyle.header}>Sign up</Text>
+              <Text style={registrationStyle.text}>
+                Welcome to QuickTip! We're excited to help you start tipping
+                with ease. To get started, simply create an account with us.
+              </Text>
             </View>
 
-            <View style={{ height: "50%" }}>
+            <View>
               <Inputfields
                 placeholder="email"
                 type="emailAddress"
@@ -108,7 +139,16 @@ export const Registration = () => {
                 )}
               </View>
             </View>
-
+            {/* <View>
+              {user ? (
+                <View>
+                  <Text>{user.email}</Text>
+                  <Button title="Sign Out" onPress={signOut} />
+                </View>
+              ) : (
+                <GoogleSignInButton onPress={signIn} />
+              )}
+            </View> */}
             <View
               style={{
                 height: "5%",
@@ -121,7 +161,7 @@ export const Registration = () => {
               <Text
                 style={{
                   marginHorizontal: 4,
-                  color: colors.grey,
+                  color: colors.textGrey,
                   fontFamily: Fonts.Monsterat,
                 }}
               >
@@ -129,7 +169,7 @@ export const Registration = () => {
               </Text>
               <Text
                 style={{
-                  color: colors.Purple,
+                  color: colors.black,
                   fontFamily: Fonts.MonsteratBold,
                 }}
                 onPress={() => navigation.navigate(onboarding.LOGIN)}

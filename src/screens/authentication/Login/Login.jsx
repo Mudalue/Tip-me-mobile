@@ -65,10 +65,10 @@ const Login = () => {
             }}
           >
             <View style={{ height: "45%", padding: 15 }}>
-              <Image
+              {/* <Image
                 source={require("../../../assets/images/login.png")}
                 style={{ width: "100%", height: 250 }}
-              />
+              /> */}
               <Text style={registrationStyle.header}>Hello Again!</Text>
               <Text style={registrationStyle.text}>
                 Login your credentials to proceed!

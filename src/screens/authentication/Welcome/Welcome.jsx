@@ -5,6 +5,7 @@ import { welcomepagestyle } from "./style.js";
 import Onboarding from "react-native-onboarding-swiper";
 import { useNavigation } from "@react-navigation/native";
 import { onboarding } from "../../../constants/screens";
+import { colors } from "../../../constants/color";
 
 const list = [
   { key: "1", value: "Choose the person you want to tip" },
@@ -12,7 +13,7 @@ const list = [
   { key: "3", value: "Hit send. It's that easy!" },
 ];
 const Item = ({ title }) => (
-  <View style={{ flexDirection: "row", alignItems: "center" }}>
+  <View style={{ flexDirection: "row", alignItems: "center", color: colors.textGrey }}>
     <Text style={welcomepagestyle.dot}>•</Text>
     <Text style={welcomepagestyle.subtitle}>{title}</Text>
   </View>
@@ -31,7 +32,7 @@ export const Welcome = () => {
             backgroundColor: "#ffffff",
             image: (
               <Image
-                source={require("../../../assets/images/onboarding1.png")}
+                source={require("../../../assets/images/welcoming.png")}
                 style={welcomepagestyle.image}
               />
             ),
@@ -49,7 +50,7 @@ export const Welcome = () => {
             backgroundColor: "#ffffff",
             image: (
               <Image
-                source={require("../../../assets/images/saving.png")}
+                source={require("../../../assets/images/work.png")}
                 style={welcomepagestyle.image_work}
               />
             ),
@@ -57,17 +58,6 @@ export const Welcome = () => {
             subtitle: React.Children.toArray(
               list.map((item, index) => <Item key={index} title={item.value} />)
             ),
-            // <>
-            //   <Text style={welcomepagestyle.subtitle}>
-            //     Choose the person you want to tip
-            //   </Text>
-            //   <Text style={welcomepagestyle.subtitle}>
-            //     Enter the amount you want to send
-            //   </Text>
-            //   <Text style={welcomepagestyle.subtitle}>
-            //     Hit send. It's that easy!
-            //   </Text>
-            // </>
           },
         ]}
       />

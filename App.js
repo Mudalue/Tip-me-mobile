@@ -10,6 +10,7 @@ import { colors } from "./src/constants/color";
 import UserContext from "./src/context/UserContext";
 
 
+
 export default function App() {
 
   const [appIsReady, setAppIsReady] = useState(false);
