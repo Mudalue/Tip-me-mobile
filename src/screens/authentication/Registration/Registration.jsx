@@ -80,6 +80,7 @@ export const Registration = () => {
       <KeyboardAvoidingView
         behavior="position"
         keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
+        enabled
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View
